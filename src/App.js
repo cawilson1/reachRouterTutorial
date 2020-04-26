@@ -8,16 +8,15 @@ const App = () => (
     <nav>
       <Link to="/">Home</Link>
       <Link to="dashboard">Dashboard</Link>
+      <Link to="invoices">Invoices</Link>
     </nav>
     <Router>
       <Home path="/" />
       <Dashboard path="dashboard" />
-      <Invoice path="invoices/:invoiceId" />
+      <Invoices path="invoices">
+        <Invoice path=":invoiceId" />
+      </Invoices>
     </Router>
-
-    <Link to="invoices/123">Invoice 123</Link>
-    {"   "}
-    <Link to="invoices/hello">Invoice Hello</Link>
   </div>
 );
 
@@ -33,8 +32,25 @@ const Dashboard = () => (
   </div>
 );
 
-const Invoice = ({ invoiceId }) => {
-  return <h2>{invoiceId}</h2>;
-};
+const Invoice = ({ invoiceId }) => (
+  <div>
+    <h2>Invoice {invoiceId} </h2>
+  </div>
+);
+
+const Invoices = ({ children }) => (
+  <div>
+    <h2>Invoices</h2>
+    <ul>
+      <li>
+        <Link to="123">Invoice 123</Link>
+      </li>
+      <li>
+        <Link to="abc">Invoice ABC</Link>
+      </li>
+    </ul>
+    {children}
+  </div>
+);
 
 export default App;
