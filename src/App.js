@@ -1,6 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
-import { Link, Router } from "@reach/router";
+import { Link, Router, navigate } from "@reach/router";
 
 const App = () => (
   <div>
@@ -40,8 +39,32 @@ const Invoice = ({ invoiceId }) => (
   </div>
 );
 
-const Invoices = ({ children }) => (
+const Invoices = ({ children, navigate }) => (
   <div>
+    <form
+      onSubmit={event => {
+        event.preventDefault();
+        {
+          console.log(event.target.elements[0].name); //key in js
+          console.log(event.target.elements[0].value); //value
+          console.log(event.target.elements[0].formAction);
+          console.log(event.target.elements);
+        }
+        const id = event.target.elements[0].value;
+        event.target.reset();
+
+        // navigate(`/invoices/${id}`);//one way
+        navigate(id); //another way
+      }}
+    >
+      <p>
+        <label>
+          New Invoice ID: <input type="text" name="invoice" />
+          <button type="submit">Create</button>
+        </label>
+      </p>
+    </form>
+
     <h2>Invoices</h2>
     <ul>
       <li>
