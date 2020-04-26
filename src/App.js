@@ -19,6 +19,4 @@ const Dashboard = () => (
   </div>
 );
 
-render(<App />, document.getElementById("root"));
-
 export default App;
