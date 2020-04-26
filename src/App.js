@@ -11,6 +11,7 @@ const App = () => (
       <Link to="invoices">Invoices</Link>
     </nav>
     <Router>
+      <NotFound default />
       <Home path="/" />
       <Dashboard path="dashboard" />
       <Invoices path="invoices">
@@ -59,5 +60,9 @@ const InvoicesIndex = () => (
     <p>Maybe put some pretty graphs here</p>
   </>
 );
+
+const NotFound = () => {
+  return <p>Sorry, nothing here</p>;
+};
 
 export default App;
