@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { Link } from "@reach/router";
+import { Link, Router } from "@reach/router";
 
 const App = () => (
   <div>
@@ -8,6 +8,10 @@ const App = () => (
     <nav>
       <Link to="/">Home</Link> <Link to="dashboard">Dashboard</Link>
     </nav>
+    <Router>
+      <Home path="/" />
+      <Dashboard path="dashboard" />
+    </Router>
   </div>
 );
 
@@ -22,5 +26,9 @@ const Dashboard = () => (
     <h2>Dashboard</h2>
   </div>
 );
+
+const Invoice = ({ invoiceId }) => {
+  return <h2>{invoiceId}</h2>;
+};
 
 export default App;
