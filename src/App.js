@@ -14,6 +14,7 @@ const App = () => (
       <Home path="/" />
       <Dashboard path="dashboard" />
       <Invoices path="invoices">
+        <InvoicesIndex path="/" />
         <Invoice path=":invoiceId" />
       </Invoices>
     </Router>
@@ -51,6 +52,12 @@ const Invoices = ({ children }) => (
     </ul>
     {children}
   </div>
+);
+
+const InvoicesIndex = () => (
+  <>
+    <p>Maybe put some pretty graphs here</p>
+  </>
 );
 
 export default App;
